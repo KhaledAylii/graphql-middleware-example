@@ -1,0 +1,44 @@
+type Query {
+  _empty: String
+  GetAgent: Agent
+  GetShift: Shift
+}
+
+type Mutation {
+  _empty(emptyInput: String): String
+  UpdateAgent(input: UpdateAgentInput!): UpdateAgentOutput!
+}
+
+enum JobType {
+  PARTTIME
+  FULLTIME
+}
+
+type Agent {
+  name: String!
+  email: String!
+  jobTitle: String!
+  jobType: JobType!
+  shifts: [Shift!]!
+}
+
+input UpdateAgentInput {
+  name: String
+  email: String
+  jobTitle: String
+  jobType: JobType
+}
+
+type UpdateAgentOutput {
+  name: String
+  email: String
+  jobTitle: String
+  jobType: JobType
+}
+
+type Shift {
+  assignee: String
+  activityName: String!
+  startTime: Int!
+  endTime: Int!
+}
